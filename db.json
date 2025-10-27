@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Daniel",
+      "email": "daniel@example.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "email": "admin@example.com",
+      "password": "123456",
+      "name": "Admin User"
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "title": "Sample Ticket",
+      "description": "This is an example ticket for testing",
+      "status": "open",
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "title": "Login page not loading",
+      "description": "Users are unable to access the login page after last update.",
+      "status": "open",
+      "priority": "high",
+      "assignedTo": "Daniel",
+      "createdAt": "2025-10-20"
+    },
+    {
+      "id": 3,
+      "title": "Email notification bug",
+      "description": "Emails are not being sent for new ticket creation.",
+      "status": "in-progress",
+      "priority": "medium",
+      "assignedTo": "Admin User",
+      "createdAt": "2025-10-22"
+    },
+    {
+      "id": 4,
+      "title": "UI issue on mobile view",
+      "description": "Ticket cards overlap on smaller screens.",
+      "status": "closed",
+      "priority": "low",
+      "assignedTo": "Daniel",
+      "createdAt": "2025-10-25"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+.dashboard-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0000ff, #00ffff);
+  padding: 2rem;
+}
+
+.dashboard-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-container h1 {
+  font-size: 2rem;
+  color: #0000ff;
+  margin-bottom: 0.5rem;
+}
+.dashboard-container p {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #0000ff;
+  color: #00ffff;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background: #0000ff;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #00ffff;
+  color: #000;
+}
+
+.logout-btn {
+  background: #ff4444;
+  color: white;
+}
+
+.logout-btn:hover {
+  background: #cc0000;
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+  .dashboard-container h1 {
+    font-size: 1.6rem;
+  }
+}

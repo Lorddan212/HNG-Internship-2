@@ -1,0 +1,219 @@
+/* ===== Base Page Layout ===== */
+.tickets-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0000ff, #00ffff);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Main Container ===== */
+.tickets-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ===== Header ===== */
+.tickets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tickets-header h1 {
+  color: #0000ff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.tickets-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.back-dashboard-btn {
+  background: #0000ff;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-dashboard-btn:hover {
+   background: #00ffff;
+  color: #000;
+}
+
+
+.new-ticket-btn {
+  background: #0000ff;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.new-ticket-btn:hover {
+  background: #00ffff;
+  color: #000;
+}
+
+/* ===== Ticket Cards Grid ===== */
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* ===== Individual Ticket Card ===== */
+.ticket-card {
+  background: #f8f8f8;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ticket-card h2 {
+  font-size: 1.2rem;
+  color: #0000ff;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Ticket Status Colors ===== */
+.status-open {
+  background: #ccfff5;
+  color: #007f5f;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-progress {
+  background: #fff8cc;
+  color: #b08b00;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-closed {
+  background: #e0e0e0;
+  color: #444;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* ===== Actions ===== */
+.ticket-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.edit-btn {
+  color: #0000ff;
+}
+
+.edit-btn:hover {
+  color: #00ffff;
+}
+
+.delete-btn {
+  color: #ff3333;
+}
+
+.delete-btn:hover {
+  color: #ff0000;
+}
+
+/* ===== Empty State ===== */
+.no-tickets {
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .tickets-container {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .tickets-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .new-ticket-btn {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tickets-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tickets-header h1 {
+    margin-bottom: 0.8rem;
+  }
+
+  .tickets-container {
+    padding: 1rem;
+  }
+}
