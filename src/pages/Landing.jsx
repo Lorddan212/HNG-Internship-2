@@ -1,10 +1,11 @@
+// src/pages/Landing.jsx
 import { Link } from "react-router-dom";
 import "./Landing.css";
 
 export default function Landing() {
   return (
-    <div className="landing-page">
-      {/* 🌊 Hero Section */}
+    <div className="landing">
+      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
           <h1>
@@ -18,18 +19,9 @@ export default function Landing() {
             <Link to="/auth/login" className="btn primary-btn">
               Get Started
             </Link>
-            
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="circle circle1"></div>
-        <div className="circle circle2"></div>
-
-        
       </section>
-
-      
     </div>
   );
 }
