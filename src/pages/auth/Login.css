@@ -1,0 +1,108 @@
+/* Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0000ff, #00ffff);
+  padding: 1rem;
+}
+
+.login-box {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+  text-align: left;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #0000ff;
+}
+
+.subtitle {
+  text-align: center;
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 5px #00ffff;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0000ff, #00ffff);
+  color: white;
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.switch-link a {
+  color: #0000ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 1.5rem;
+  }
+
+  input, button {
+    font-size: 0.95rem;
+  }
+}

@@ -1,40 +1,51 @@
 .landing-page {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* 🌊 Hero Section */
+.hero {
+  position: relative;
   background: linear-gradient(135deg, #0000ff, #00ffff);
   color: white;
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
+  overflow: hidden;
 }
 
-.landing-container {
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 2.5rem;
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
 }
 
-.landing-container h1 {
-  font-size: 2.5rem;
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.landing-container span {
+.hero .highlight {
   color: #00ffff;
 }
 
-.landing-container p {
-  font-size: 1.1rem;
+.hero p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
   margin-bottom: 2rem;
-  color: #e0f7ff;
 }
 
-.landing-buttons {
+/* 🌟 Buttons */
+.buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -44,13 +55,13 @@
 .btn {
   padding: 0.8rem 1.8rem;
   border-radius: 10px;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .primary-btn {
-  background: white;
+  background: #ffffff;
   color: #0000ff;
 }
 
@@ -66,18 +77,80 @@
 }
 
 .secondary-btn:hover {
-  background: white;
-  color: #0000ff;
+  background: #00ffff;
+  border-color: #00ffff;
+  color: #000;
 }
 
-@media (max-width: 600px) {
-  .landing-container {
-    padding: 1.8rem;
+/* 🎨 Decorative Circles */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.circle1 {
+  width: 120px;
+  height: 120px;
+  background: #00ffff;
+  top: 50px;
+  left: 80px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.circle2 {
+  width: 200px;
+  height: 200px;
+  background: #0000ff;
+  bottom: 60px;
+  right: 100px;
+  animation: float 7s ease-in-out infinite;
+}
+
+/* 🌊 Wave Effect */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* 🌈 Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-  .landing-container h1 {
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
     font-size: 2rem;
   }
-  .landing-container p {
+
+  .hero p {
     font-size: 1rem;
   }
+
+  .circle1 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .circle2 {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* 🦶 Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  color: #0000ff;
+  font-weight: 500;
 }

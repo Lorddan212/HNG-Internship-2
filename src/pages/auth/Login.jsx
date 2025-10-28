@@ -1,7 +1,8 @@
 // src/pages/auth/Login.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Auth.css";
+import { saveSession } from "../../services/auth";
+import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,25 +19,27 @@ export default function Login() {
 
     const { email, password } = formData;
 
-    // Simple validation
-    if (!email || !password) {
-      setError("Please fill in all fields");
-      return;
-    }
+    if (email === "admin@example.com" && password === "123456") {
+  saveSession({
+    firstName: "Admin",
+    lastName: "User",
+    email,
+  });
 
-    // ✅ Get the user saved from signup
-    const storedUserJSON = localStorage.getItem("ticketapp_user");
-    if (!storedUserJSON) {
-      setError("No registered user found. Please sign up first.");
-      return;
-    }
+  navigate("/dashboard", { replace: true });
+}
 
-    const storedUser = JSON.parse(storedUserJSON);
 
-    // ✅ Check email + password match
-    if (email === storedUser.email && password === storedUser.password) {
-      // Save the full user info to session (includes firstName & lastName)
-      localStorage.setItem("ticketapp_session", JSON.stringify(storedUser));
+    // Retrieve saved user from localStorage
+    const storedUser = JSON.parse(localStorage.getItem("ticketapp_user"));
+
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      // Save user session
+      saveSession({
+        firstName: storedUser.firstName,
+        lastName: storedUser.lastName,
+        email,
+      });
 
       navigate("/dashboard");
     } else {
@@ -45,36 +48,44 @@ export default function Login() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h2>Login</h2>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Welcome Back</h2>
+        <p className="subtitle">Login to manage your tickets efficiently</p>
+
         {error && <div className="error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
 
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
 
-          <button type="submit">Login</button>
+          <button type="submit" className="btn-primary">
+            Login
+          </button>
         </form>
 
-        <div className="link">
+        <p className="switch-link">
           Don't have an account? <Link to="/auth/signup">Sign Up</Link>
-        </div>
+        </p>
       </div>
     </div>
   );

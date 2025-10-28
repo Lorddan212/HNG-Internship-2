@@ -4,15 +4,32 @@ import "./Landing.css";
 export default function Landing() {
   return (
     <div className="landing-page">
-      <div className="landing-container">
-        <h1>Welcome to <span>TicketPro</span></h1>
-        <p>Streamline your support requests and manage tickets effortlessly.</p>
-        <div className="landing-buttons">
-          <Link to="/auth/login" className="cta-btn">
-          Get Started
-        </Link>
+      {/* 🌊 Hero Section */}
+      <section className="hero">
+        <div className="hero-content">
+          <h1>
+            Welcome to <span className="highlight">TicketPro</span>
+          </h1>
+          <p>
+            Manage your tickets effortlessly — create, track, and resolve issues in one place.
+          </p>
+
+          <div className="buttons">
+            <Link to="/auth/login" className="btn primary-btn">
+              Get Started
+            </Link>
+            
+          </div>
         </div>
-      </div>
+
+        {/* Decorative Elements */}
+        <div className="circle circle1"></div>
+        <div className="circle circle2"></div>
+
+        
+      </section>
+
+      
     </div>
   );
 }

@@ -6,6 +6,7 @@ import "./Dashboard.css";
 export default function Dashboard() {
   const navigate = useNavigate();
   const session = getSession();
+  const [userName, setUserName] = useState("User");
   const [stats, setStats] = useState({
     total: 0,
     open: 0,
@@ -14,18 +15,37 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    const tickets = JSON.parse(localStorage.getItem("tickets")) || [];
-    const open = tickets.filter((t) => t.status === "open").length;
-    const inProgress = tickets.filter((t) => t.status === "in_progress").length;
-    const closed = tickets.filter((t) => t.status === "closed").length;
+    const loadUser = () => {
+      if (session && session.firstName) {
+        setUserName(`${session.firstName} ${session.lastName || ""}`);
+      } else if (session?.email) {
+        setUserName(session.email);
+      } else {
+        navigate("/auth/login");
+      }
+    };
 
-    setStats({
-      total: tickets.length,
-      open,
-      inProgress,
-      closed,
-    });
-  }, []);
+    const loadTicketStats = () => {
+      const storedTickets = JSON.parse(localStorage.getItem("tickets")) || [];
+      setStats({
+        total: storedTickets.length,
+        open: storedTickets.filter((t) => t.status === "open").length,
+        inProgress: storedTickets.filter((t) => t.status === "in_progress").length,
+        closed: storedTickets.filter((t) => t.status === "closed").length,
+      });
+    };
+
+    loadUser();
+    loadTicketStats();
+
+    // Listen for updates (e.g., when tickets change)
+    const handleUpdate = () => loadTicketStats();
+    window.addEventListener("tickets-updated", handleUpdate);
+
+    return () => {
+      window.removeEventListener("tickets-updated", handleUpdate);
+    };
+  }, [navigate, session]);
 
   const handleLogout = () => {
     clearSession();
@@ -35,33 +55,35 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
       <div className="dashboard-container">
-        <h1>Welcome, {session?.firstName} {session?.lastName || ""} 👋</h1>
-        <p className="subtitle">Here’s an overview of your ticket activity.</p>
+        <h1>Welcome, {userName} 👋</h1>
+        <p className="subtitle">Manage your tickets efficiently with TicketPro</p>
 
-        <div className="stats-grid">
-          <div className="stat-card">
-            <h3>Total Tickets</h3>
-            <p>{stats.total}</p>
+        {/* 📊 Ticket Statistics */}
+        <div className="stats-container">
+          <div className="stat-card total">
+            <h2>{stats.total}</h2>
+            <p>Total Tickets</p>
           </div>
-          <div className="stat-card">
-            <h3>Open</h3>
-            <p>{stats.open}</p>
+          <div className="stat-card open">
+            <h2>{stats.open}</h2>
+            <p>Open</p>
           </div>
-          <div className="stat-card">
-            <h3>In Progress</h3>
-            <p>{stats.inProgress}</p>
+          <div className="stat-card progress">
+            <h2>{stats.inProgress}</h2>
+            <p>In Progress</p>
           </div>
-          <div className="stat-card">
-            <h3>Closed</h3>
-            <p>{stats.closed}</p>
+          <div className="stat-card closed">
+            <h2>{stats.closed}</h2>
+            <p>Closed</p>
           </div>
         </div>
 
+        {/* Buttons */}
         <div className="dashboard-buttons">
           <Link to="/tickets" className="btn primary-btn">
             Manage Tickets
           </Link>
-          <button onClick={handleLogout} className="btn logout-btn">
+          <button className="btn logout-btn" onClick={handleLogout}>
             Logout
           </button>
         </div>
