@@ -55,7 +55,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
       <div className="dashboard-container">
-        <h1>Welcome, {userName} 👋</h1>
+        <h2>Welcome, {userName} 👋</h2>
         <p className="subtitle">Manage your tickets efficiently with TicketPro</p>
 
         {/* 📊 Ticket Statistics */}

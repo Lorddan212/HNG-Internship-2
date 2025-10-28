@@ -20,15 +20,16 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
+h2 {
   font-size: 2rem;
   margin-bottom: 0.8rem;
   font-weight: 700;
   color: #0000ff;
+  text-wrap: wrap;
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #000000;
   margin-bottom: 2.5rem;
 }
